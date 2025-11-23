@@ -1,13 +1,9 @@
 # 🔒 THE VAULT
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
 ![Python](https://img.shields.io/badge/backend-FastAPI-009688.svg)
-
 ![React](https://img.shields.io/badge/frontend-Next.js-000000.svg)
-
 ![AI](https://img.shields.io/badge/AI-Llama%203.1-orange.svg)
-
 ![Database](https://img.shields.io/badge/vector_db-Supabase-3ECF8E.svg)
 
 > **An Enterprise-Grade RAG (Retrieval Augmented Generation) System.**
@@ -130,4 +126,4 @@ UI runs on `http://localhost:3000`
 
 ## 👨‍💻 Author
 
-Chaitanya Sai Meka Full Stack AI Engineer | [LinkedIn](https://www.linkedin.com/in/chaitanya-sai-meka/) | [Portfolio](https://chaitanya-sai-meka.vercel.app/)
+Chaitanya Sai Meka  | [LinkedIn](https://www.linkedin.com/in/chaitanya-sai-meka/) | [Portfolio](https://chaitanya-sai-meka.vercel.app/)
