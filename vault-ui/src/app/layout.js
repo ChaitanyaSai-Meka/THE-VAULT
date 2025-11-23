@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "The Vault - Neural Intelligence",
   description: "Your AI-powered knowledge vault",
+  icons: {
+    icon: "/vault_logo.webp",
+  },
 };
 
 export default function RootLayout({ children }) {
