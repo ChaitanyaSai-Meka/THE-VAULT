@@ -1,0 +1,18 @@
+[project]
+name = "the-vault"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.121.3",
+    "groq>=0.36.0",
+    "pgvector>=0.4.1",
+    "psycopg2-binary>=2.9.11",
+    "pydantic>=2.12.4",
+    "pypdf>=6.4.0",
+    "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.20",
+    "sentence-transformers>=5.1.2",
+    "uvicorn[standard]>=0.38.0",
+]
