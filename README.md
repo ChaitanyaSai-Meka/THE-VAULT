@@ -6,7 +6,8 @@
 ![AI](https://img.shields.io/badge/AI-Llama%203.1-orange.svg)
 ![Database](https://img.shields.io/badge/vector_db-Supabase-3ECF8E.svg)
 
-> **An Enterprise-Grade RAG (Retrieval Augmented Generation) System.** > *Securely ingest documents, vectorize knowledge, and chat with your private data using local embeddings and cloud-native LLMs.*
+> **An Enterprise-Grade RAG (Retrieval Augmented Generation) System.**
+> *Securely ingest documents, vectorize knowledge, and chat with your private data using local embeddings and cloud-native LLMs.*
 
 ---
 
@@ -35,12 +36,12 @@ This project is built using a modern **Microservices** architecture:
 
 ```mermaid
 graph TD
-    User[User (Next.js UI)] -->|Upload PDF/Text| API[FastAPI Backend]
-    API -->|Generate Embeddings| VectorEngine[Sentence Transformers (Local CPU)]
-    API -->|Store Vectors| DB[(Supabase + pgvector)]
+    User["User (Next.js UI)"] -->|Upload PDF/Text| API["FastAPI Backend"]
+    API -->|Generate Embeddings| VectorEngine["Sentence Transformers (Local CPU)"]
+    API -->|Store Vectors| DB[("Supabase + pgvector")]
     
     User -->|Ask Question| API
     API -->|Semantic Search| DB
     DB -->|Return Context| API
-    API -->|Context + Prompt| Brain[Groq API (Llama 3.1)]
+    API -->|Context + Prompt| Brain["Groq API (Llama 3.1)"]
     Brain -->|Answer| User
