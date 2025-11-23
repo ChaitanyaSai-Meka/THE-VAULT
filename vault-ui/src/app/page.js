@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Loader2, FileText, Plus, Moon, Sun } from "lucide-react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL
+
 export default function Home() {
   const [messages, setMessages] = useState([
     { role: "ai", content: "I am The Vault. Upload a document or ask me anything." }
@@ -25,7 +27,7 @@ export default function Home() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/chat", {
+      const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: input }),
@@ -50,7 +52,7 @@ export default function Home() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/upload/text", {
+      const res = await fetch(`${API_URL}/upload/text`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
@@ -73,7 +75,7 @@ export default function Home() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/upload/pdf", {
+      const res = await fetch(`${API_URL}/upload/pdf`, {
         method: "POST",
         body: formData,
       });
