@@ -7,7 +7,6 @@
 ![Database](https://img.shields.io/badge/vector_db-Supabase-3ECF8E.svg)
 
 > **An Enterprise-Grade RAG (Retrieval Augmented Generation) System.**
-
 > *Securely ingest documents, vectorize knowledge, and chat with your private data using local embeddings and cloud-native LLMs.*
 
 ---
@@ -19,19 +18,14 @@
 ---
 
 ## 🧐 The Problem
-
 Standard LLMs (like ChatGPT) cannot access your private files, legal contracts, or internal documentation. Uploading sensitive data to public models poses a security risk.
 
 ## 💡 The Solution: The Vault
-
 The Vault is a **Private Knowledge Engine**. It uses **RAG (Retrieval Augmented Generation)** to turn your static documents (PDFs, Notes) into a searchable vector index.
 
 When you ask a question, The Vault:
-
 1.  **Searches** your private database for the most relevant paragraphs (Semantic Search).
-
 2.  **Retrieves** that context.
-
 3.  **Feeds** it to Llama 3.1 to generate a precise answer with **citations**.
 
 ---
@@ -93,25 +87,46 @@ Follow these steps to run The Vault locally.
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/THE-VAULT.git
+git clone https://github.com/ChaitanyaSai-Meka/THE-VAULT.git
 cd THE-VAULT
 ```
 
-### 2. Backend Setup
+### 2. Database Setup (Supabase)
+
+- Create a new project on Supabase.
+- Go to the SQL Editor in the left sidebar.
+- Paste and run the following SQL commands to enable Vector Search and create the table:
+
+```sql
+
+create extension if not exists vector;
+
+create table vault_data (
+  id bigserial primary key,
+  content text not null,
+  embedding vector(384) 
+);
+```
+
+### 3. Backend Setup
 
 ```bash
 cd the-vault
-# Create .env file with GROQ_API_KEY and DATABASE_URL
+# Create a .env file with the following keys:
+# GROQ_API_KEY=gsk_...
+# DATABASE_URL=postgresql://...
 uv sync
 uv run python main.py
 ```
 
 Server runs on `http://127.0.0.1:8000`
 
-### 3. Frontend Setup
+### 4. Frontend Setup
 
 ```bash
 cd vault-ui
+# Create a .env file with:
+# NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 npm install
 npm run dev
 ```
