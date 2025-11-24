@@ -10,9 +10,20 @@ export default function Home() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        await fetch(`${API_URL}/health`);
+      } catch (error) {
+        console.error("Health check failed:", error);
+      }
+    };
+    checkHealth();
+  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

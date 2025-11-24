@@ -52,6 +52,9 @@ def store_in_db(content: str):
     cur.close()
     conn.close()
 
+@app.get("/health")
+def health_check():
+    return {"status":"ok"}
 
 @app.post("/upload/text")
 def upload_text(doc: Document):
