@@ -40,17 +40,23 @@ class UserQuery(BaseModel):
 def store_in_db(content: str):
     if not content.strip():
         raise ValueError("Content is empty")
-        
-    vector = embed_model.encode(content).tolist()
+    vector = embed_model.encode(
+        content,
+        normalize_embeddings=True
+    ).tolist()
     conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute(
-        "INSERT INTO vault_data (content, embedding) VALUES (%s, %s)",
-        (content, vector)
-    )
-    conn.commit()
-    cur.close()
-    conn.close()
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO vault_data (content, embedding)
+                    VALUES (%s, %s::vector)
+                    """,
+                    (content, vector)
+                )
+    finally:
+        conn.close()
 
 @app.get("/health")
 def health_check():
